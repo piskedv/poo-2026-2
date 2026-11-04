@@ -1,24 +1,21 @@
 public class Main {
     public static void main(String[] args) {
 
-        try {
-            Atacante[] atacantes = {
-                new Torre("Torre do mal"),
-                new Armadilha("Armadilha do mal"),
-                new Guerreiro("Guerreiro do mal", 10),
-                new Mago("Mago do mal", 5),
-                new Arqueiro("Arqueiro do BEM", 0)
-            };
+        Invetario<Arma> arsenal = new Invetario<>();
+        arsenal.guardar(new Arma("Espada", 10));
+        arsenal.guardar(new Arma("Machado", 15));
 
-           for (Atacante item : atacantes) {
-                item.atacar();
-            }
-        } catch (SemEnergiaExecption erro) {
-            System.out.println("Erro: " + erro.getMessage());
-        }
-            
+        Invetario<Pocao> bolsa = new Invetario<>();
+        bolsa.guardar(new Pocao("Poção de Vida", 20));
 
+        Arma armaAtual = arsenal.pegar(0);
+        Pocao pocaoAtual = bolsa.pegar(0);
+
+        System.out.println("Arma atual: " + armaAtual.getNome());
+        System.out.println("Poção atual: " + pocaoAtual.getNome());
+        System.out.println("Dano da arma: " + arsenal.quantidade());
 
 
     }
+
 }
